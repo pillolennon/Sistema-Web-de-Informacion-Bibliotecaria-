@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Usuario</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+    <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    <h2>Bienvenido, {{ session['nombre'] }}</h2> 
+    <ul>
+        <li><a href="/libros_disponibles_usuario" class="btn btn-primary">Ver libros disponibles</a></li>
+        <li><a href="/logout" class="btn btn-danger">Cerrar sesión</a></li>
+    </ul>
+</body>
+</html>

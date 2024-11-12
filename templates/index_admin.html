@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio | Administrador | SIB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+        <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    </header>
+
+    <h2>Bienvenido {{ session['nombre'] }}; Administrador Bibliotecario</h2>
+    <ul>
+        <a href="/libros_disponibles" class="btn btn-primary">Ver libros disponibles</a>
+        <a href="/registrar_libro" class="btn btn-success">Registrar nuevo libro</a>
+        <a href="/libros_prestados" class="btn btn-warning">Ver libros prestados</a>
+        <a href="/reporte_prestamos" class="btn btn-warning">Reporte de Préstamos Finalizados</a>
+        <a href="/ver_usuarios" class="btn btn-info">Ver usuarios</a>
+        <a href="/register" class="btn btn-secondary">Registrar Usuario</a>
+        <a href="/logout" class="btn btn-danger">Cerrar sesión</a>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalogo de Libros | SIB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+        <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    </header>
+    <h2>Catálogo de Libros</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Autor</th>
+                <th>Género</th>
+                <th>Año de Publicación</th>
+                <th>Ejemplares Disponibles</th>
+                {% if session.tipo_usuario == 'administrador' %}
+                <th>Acciones</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for libro in libros %}
+            <tr>
+                <td>{{ libro['titulo'] }}</td>
+                <td>{{ libro['autor'] }}</td>
+                <td>{{ libro['genero'] }}</td>
+                <td>{{ libro['año_publicacion'] }}</td>
+                <td>{{ libro['ejemplares'] }}</td>
+                {% if session.tipo_usuario == 'administrador' %}
+                <td>
+                    <form method="POST" action="/eliminar_libro/{{ libro['id'] }}">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                    <a href="/prestamo_libro/{{ libro['id'] }}" class="btn btn-primary">Prestar</a>
+                    <a href="/editar_libro/{{ libro['id'] }}" class="btn btn-secondary">Editar</a> <!-- Botón Editar añadido -->
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/index" class="btn btn-primary">Volver al Inicio</a>
+</body>
+</html>

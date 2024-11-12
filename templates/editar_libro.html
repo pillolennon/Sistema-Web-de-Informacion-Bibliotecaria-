@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Libro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    </header>
+    
+    <h2>Libros Disponibles</h2>
+    <h1>Editar Libro: {{ libro['titulo'] }}</h1>
+    <form method="POST">
+        <label for="titulo">Título:</label>
+        <input type="text" name="titulo" value="{{ libro['titulo'] }}" readonly><br>
+
+        <label for="autor">Autor:</label>
+        <input type="text" name="autor" value="{{ libro['autor'] }}" readonly><br>
+
+        <label for="genero">Género:</label>
+        <input type="text" name="genero" value="{{ libro['genero'] }}" readonly><br>
+
+        <label for="año_publicacion">Año de Publicación:</label>
+        <input type="text" name="año_publicacion" value="{{ libro['año_publicacion'] }}" readonly><br>
+
+        <label for="ejemplares">Cantidad de Ejemplares:</label>
+        <input type="number" name="ejemplares" value="{{ libro['ejemplares'] }}" min="0" required><br>
+
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="/libros_disponibles">Cancelar</a>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios | SIB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+        <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    </header>
+    <h2>Usuarios Registrados</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Nombre de Usuario</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Tipo de Usuario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario['username'] }}</td>
+                <td>{{ usuario['nombre'] }}</td>
+                <td>{{ usuario['apellidos'] }}</td>
+                <td>{{ usuario['tipo_usuario'] }}</td>
+                <td>
+                    <form action="{{ url_for('eliminar_usuario', usuario_id=usuario['id']) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">Volver al Inicio</a>
+</body>
+</html>

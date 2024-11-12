@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Libros Prestados SIB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+    <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    <h1>Libros Prestados</h1>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Solicitante</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Entrega</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <td>{{ prestamo[5] }}</td> <!-- título del libro -->
+                <td>{{ prestamo[1] }}</td> <!-- solicitante -->
+                <td>{{ prestamo[2] }}</td> <!-- fecha préstamo -->
+                <td>{{ prestamo[3] }}</td> <!-- fecha entrega -->
+                <td>
+                    <form method="POST" action="/devolver_libro/{{ prestamo[0] }}">
+                        <button type="submit">Marcar como devuelto</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/index">Volver al Inicio</a>
+</body>
+</html>

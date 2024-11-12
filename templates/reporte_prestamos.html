@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Préstamos Finalizados | SIB</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+        <h1>Sistema Bibliotecario CEMSAD 37</h1>
+    </header>
+    <h2>Reporte de Préstamos Finalizados</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Solicitante</th>
+                <th>Fecha de Préstamo</th>
+                <th>Fecha de Entrega</th>
+                <th>Título del Libro</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for prestamo in prestamos %}
+            <tr>
+                <td>{{ prestamo['solicitante'] }}</td>
+                <td>{{ prestamo['fecha_prestamo'] }}</td>
+                <td>{{ prestamo['fecha_entrega'] }}</td>
+                <td>{{ prestamo['titulo'] }}</td>
+                <td>
+                    <form action="{{ url_for('eliminar_prestamo', prestamo_id=prestamo['id']) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('index') }}">Volver al Inicio</a>
+</body>
+</html>

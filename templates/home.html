@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIB - CEMSAD 37</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 10px;
+            text-align: center;
+            font-size: 1.5em;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        /* Menú lateral */
+        nav {
+            width: 250px;
+            background-color: #333;
+            padding-top: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        /* Contenido */
+        main {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        h2 {
+            color: #4CAF50;
+            margin-top: 0;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .login-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #45a049;
+        }
+        img{
+            margin-left: 30%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Sistema de Información Bibliotecaria
+    </header>
+
+    <div class="container">
+        <!-- Menú lateral -->
+        <nav>
+            <a href="/login">Iniciar Sesión</a>
+            <a href="/register">Regístrate</a>
+            <a href="mailto:e037172025@cobaej.edu.mx" subject=Asunto del correo&body=Este es el cuerpo del correo">Ayuda</a>
+
+        </nav>
+
+        <!-- Contenido principal -->
+        <main>
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="max-width: 1000px; height: auto;">
+            <h2>Bienvenid@s al Sistema de Información Bibliotecaria SIB</h2>
+            <p>
+                En la Biblioteca Digital del Centro de Educación Media Superior 37 San Juanito de Escobedo (CEMSaD 37), Podrás explorar nuestro catálogo, ver los libros disponibles y gestionar tus préstamos. <br>
+                Si eres administrad@r, podrás gestionar usuarios, registrar libros y controlar los préstamos.
+            </p>
+            <p>
+                Para acceder al catálogo de la biblioteca digital inicia sesión con tus credenciales dando clic en el bitón izquierdo 'Iniciar Sesión'.
+                Si no cuenta con usuario, da clic en el botón 'Registrar Usuario'.<br>
+                Si olvidó sus credenciales o es administrativo y no tiene acceso, por favor comuníquese al área correspondiente dando clic en 'Ayuda'.
+            </p>
+        </main>
+    </div>
+
+    <footer>
+        &copy; 2024 Biblioteca CEMSaD 37
+    </footer>
+
+</body>
+</html>
